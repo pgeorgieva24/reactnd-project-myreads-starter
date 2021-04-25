@@ -9,9 +9,7 @@ class SearchBooks extends Component {
     }
 
     updateQuery = (query) => {
-        this.setState(() => ({
-            query
-        }));
+        this.setState({ query });
 
         //TODO: make it work with  throttle/debounce
         this.props.searchBook(query);
@@ -19,6 +17,7 @@ class SearchBooks extends Component {
 
     render() {
         const { bookResults, shelfChanged } = this.props;
+        const { query } = this.state;
         const showingBooks = bookResults;
 
         return (
@@ -34,7 +33,7 @@ class SearchBooks extends Component {
                             className='search-books'
                             type="text"
                             placeholder="Search by title or author"
-                            value={this.state.query}
+                            value={query}
                             onChange={(event) => this.updateQuery(event.target.value)}
                         />
                     </div>

@@ -4,9 +4,10 @@ import Book from './Book'
 class BookList extends Component {
     render() {
         let { books, shelfChanged } = this.props;
-        books = books.length > 0 ? books : [books];
 
-        return (
+        books = books.length === 0 ? [] : [...books];
+
+        return (books && books.length && books.length > 0 && (
             <div className="list-books">
                 <ol className="books-grid">
                     {books.map(book => (
@@ -16,7 +17,7 @@ class BookList extends Component {
                     ))}
                 </ol>
             </div >
-        )
+        ))
     }
 }
 
